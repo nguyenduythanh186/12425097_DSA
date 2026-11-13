@@ -1,105 +1,49 @@
-﻿
+﻿using System;
+
 namespace Buoi01_DeQuy
 {
     class Program
     {
         static void Main(string[] args)
         {
+            // Để in được tiếng Việt có dấu
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            int choice;
 
-            do
-            {
-                Console.WriteLine("\n================== MENU BÀI TẬP ĐỆ QUY ==================");
-                Console.WriteLine("1. Bài 1: Tính S(n) = 1 + 2 + ... + n");
-                Console.WriteLine("2. Bài 2: Tính S(n) = 1 + 2^2 + ... + n^2");
-                Console.WriteLine("3. Bài 3: Tính S(n) = 1 + 1/2 + ... + 1/n");
-                Console.WriteLine("4. Bài 4: Tính lũy thừa S(x, n) = x^n");
-                Console.WriteLine("5. Bài 5: Tìm ước số lẻ lớn nhất của n");
-                Console.WriteLine("6. Bài 6: Tìm ước chung lớn nhất (UCLN) của a và b");
-                Console.WriteLine("7. Bài 7: Đếm số lượng chữ số của n");
-                Console.WriteLine("8. Bài 8: Tính căn thức lồng nhau sqrt(1 + sqrt(2 + ... + sqrt(n)))");
-                Console.WriteLine("0. Thoát chương trình");
-                Console.Write("--> Mời bạn chọn bài (0-8): ");
+            Console.WriteLine("=== Bài 1 ===");
+            int n1 = 5;
+            Console.WriteLine($"S({n1}) = {DeQuy.Bai1(n1)}");
 
-                if (!int.TryParse(Console.ReadLine(), out choice))
-                {
-                    Console.WriteLine("Lựa chọn không hợp lệ! Vui lòng nhập số từ 0 đến 8.");
-                    continue;
-                }
+            Console.WriteLine("\n=== Bài 2 ===");
+            int n2 = 4;
+            Console.WriteLine($"S({n2}) = {DeQuy.Bai2(n2)}");
 
-                Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine("\n=== Bài 3 ===");
+            int n3 = 4;
+            Console.WriteLine($"S({n3}) = {DeQuy.Bai3(n3)}");
 
-                switch (choice)
-                {
-                    case 1:
-                        Console.Write("Nhập vào số n: ");
-                        int n1 = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"==> Kết quả S({n1}) = {DeQuy.Bai1(n1)}");
-                        break;
+            Console.WriteLine("\n=== Bài 4 ===");
+            double x = 2;
+            int n4 = 3;
+            Console.WriteLine($"{x}^{n4} = {DeQuy.Bai4(x, n4)}");
 
-                    case 2:
-                        Console.Write("Nhập vào số n: ");
-                        int n2 = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"==> Kết quả S({n2}) = {DeQuy.Bai2(n2)}");
-                        break;
+            Console.WriteLine("\n=== Bài 5 ===");
+            int n5 = 24;
+            Console.WriteLine($"Ước số lẻ lớn nhất của {n5} là: {DeQuy.Bai5(n5)}");
 
-                    case 3:
-                        Console.Write("Nhập vào số n: ");
-                        int n3 = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"==> Kết quả S({n3}) = {DeQuy.Bai3(n3)}");
-                        break;
+            Console.WriteLine("\n=== Bài 6 ===");
+            int a = 24, b = 36;
+            Console.WriteLine($"UCLN({a}, {b}) = {DeQuy.Bai6(a, b)}");
 
-                    case 4:
-                        Console.Write("Nhập cơ số x: ");
-                        double x = double.Parse(Console.ReadLine());
-                        Console.Write("Nhập số mũ n: ");
-                        int n4 = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"==> Kết quả {x}^{n4} = {DeQuy.Bai4(x, n4)}");
-                        break;
+            Console.WriteLine("\n=== Bài 7 ===");
+            int n7 = 12345;
+            Console.WriteLine($"Số chữ số của {n7} là: {DeQuy.Bai7(n7)}");
 
-                    case 5:
-                        Console.Write("Nhập vào số n: ");
-                        int n5 = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"==> Ước số lẻ lớn nhất của {n5} là: {DeQuy.Bai5(n5)}");
-                        break;
+            Console.WriteLine("\n=== Bài 8 ===");
+            double n8 = 3;
+            Console.WriteLine($"Kết quả căn thức lồng nhau đến {n8} là: {DeQuy.Bai8(n8)}");
 
-                    case 6:
-                        Console.Write("Nhập số a: ");
-                        int a = int.Parse(Console.ReadLine());
-                        Console.Write("Nhập số b: ");
-                        int b = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"==> UCLN({a}, {b}) = {DeQuy.Bai6(a, b)}");
-                        break;
-
-                    case 7:
-                        Console.Write("Nhập vào số n: ");
-                        int n7 = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"==> Số chữ số của {n7} là: {DeQuy.Bai7(n7)}");
-                        break;
-
-                    case 8:
-                        Console.Write("Nhập vào số n: ");
-                        double n8 = double.Parse(Console.ReadLine());
-                        Console.WriteLine($"==> Kết quả căn thức lồng nhau đến {n8} là: {DeQuy.Bai8(n8)}");
-                        break;
-
-                    case 0:
-                        Console.WriteLine("Cảm ơn bạn đã sử dụng chương trình. Tạm biệt!");
-                        break;
-
-                    default:
-                        Console.WriteLine("Lựa chọn không tồn tại! Vui lòng chọn lại từ 0 đến 8.");
-                        break;
-                }
-
-                if (choice != 0)
-                {
-                    Console.WriteLine("\nNhấn phím bất kỳ để tiếp tục...");
-                    Console.ReadKey();
-                }
-
-            } while (choice != 0);
+            Console.WriteLine("\nNhấn phím bất kỳ để kết thúc...");
+            Console.ReadKey();
         }
     }
 
@@ -119,7 +63,7 @@ namespace Buoi01_DeQuy
 
         public static double Bai3(int n)
         {
-            if (n == 1) return 1;
+            if (n == 1) return 1.0;
             return Bai3(n - 1) + 1.0 / n;
         }
 
@@ -131,13 +75,13 @@ namespace Buoi01_DeQuy
 
         public static int Bai5(int n)
         {
-            if (n % 2 == 1) return n;
+            if (n % 2 != 0) return n;
             return Bai5(n / 2);
         }
 
         public static int Bai6(int a, int b)
         {
-            if (a % b == 0) return b;
+            if (b == 0) return a;
             return Bai6(b, a % b);
         }
 
@@ -149,7 +93,7 @@ namespace Buoi01_DeQuy
 
         public static double Bai8(double n, int i = 1)
         {
-            if (i == n) return Math.Sqrt(n);
+            if (i >= (int)n) return Math.Sqrt(n);
             return Math.Sqrt(i + Bai8(n, i + 1));
         }
     }
